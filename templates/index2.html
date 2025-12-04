@@ -1,22 +1,102 @@
-<h2> Página de inicio</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado - Titanic</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #1b3b5a, #ffffff);
+            color: #fdf5e6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
 
-<h3>Imagen</h3>
-{% if img_url %}
-    <div>
-        <img src="{{ img_url }}" alt="Imagen desde URL">
-    </div>
-{% endif %}
-<br>
-<h3>Estimación</h3>
-{% if respuesta2 %}
-    <div>
-        {{respuesta2 | safe}}
-    </div>
-{% endif %}
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ffd700;
+            text-shadow: 1px 1px 4px #000;
+        }
 
+        h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
 
+        .image-container {
+            border: 3px solid #b8860b;
+            border-radius: 15px;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: rgba(0,0,0,0.3);
+        }
 
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            display: block;
+            margin: auto;
+        }
 
-<form action="{{url_for('home')}}" method = "get">
-    <button type="submit">Ir a home</button>
-</form>
+        .result {
+            background-color: rgba(255, 215, 0, 0.2);
+            color: #000;
+            font-weight: bold;
+            padding: 15px 25px;
+            border-radius: 15px;
+            font-size: 1.3em;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        button {
+            background-color: #b8860b;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ffd700;
+            color: #000;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Resultado del análisis</h2>
+
+    {% if img_url %}
+        <div class="image-container">
+            <img src="{{ img_url }}" alt="Imagen desde URL">
+        </div>
+    {% endif %}
+
+    {% if respuesta2 %}
+        <div class="result">
+            {{ respuesta2 | safe }}
+        </div>
+    {% endif %}
+
+    <form action="{{ url_for('home') }}" method="get">
+        <button type="submit">Volver a inicio</button>
+    </form>
+
+    <footer>🌊 Inspirado en el Titanic - 1912 🌊</footer>
+</body>
+</html>
