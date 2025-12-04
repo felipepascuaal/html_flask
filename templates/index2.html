@@ -1,0 +1,22 @@
+<h2> Página de inicio</h2>
+
+<h3>Imagen</h3>
+{% if img_url %}
+    <div>
+        <img src="{{ img_url }}" alt="Imagen desde URL">
+    </div>
+{% endif %}
+<br>
+<h3>Estimación</h3>
+{% if respuesta2 %}
+    <div>
+        {{respuesta2 | safe}}
+    </div>
+{% endif %}
+
+
+
+
+<form action="{{url_for('home')}}" method = "get">
+    <button type="submit">Ir a home</button>
+</form>
